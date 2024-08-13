@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: '16'
 
-      - name: npm install
+      - name: npm install jest
 
       - name: Run tests
       run: npm test
