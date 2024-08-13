@@ -1,1 +1,21 @@
+name: workflows
 
+on: push
+
+jobs:
+  test : 
+  runs-on: windows-latest
+
+    steps:
+
+      - name: Checkout repository
+      uses: actions/checkout@v3
+      - name: Setup Node.js
+      uses: actions/setup-node@v3 
+      with:
+        node-version: '16'
+
+      - name: npm install
+
+      - name: Run tests
+      run: npm test
