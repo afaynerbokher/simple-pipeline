@@ -1,21 +1,22 @@
-name: workflows
+name: firdt run
 
-on: push
+on: [workflow_dispatch]
 
 jobs:
-  test : 
+  run-js-tests: 
   runs-on: windows-latest
 
-    steps:
+  steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+  
+    - name: Setup Node.js
+    uses: actions/setup-node@v3 
+    with:
+      node-version: '20'
 
-      - name: Checkout repository
-      uses: actions/checkout@v3
-      - name: Setup Node.js
-      uses: actions/setup-node@v3 
-      with:
-        node-version: '16'
+    - name: Install dependencies
+    run: npm install jest
 
-      - name: npm install jest
-
-      - name: Run tests
-      run: npm test
+    - name: Run tests
+    run: npx jest
